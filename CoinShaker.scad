@@ -6,8 +6,8 @@ include <EUR.scad>;
 
 
 // Parameters
-Bwidth = 70;
-Blength = 70;
+Bwidth = 100;
+Blength = 100;
 Bheight = 15;
 
 //tweak parameters
@@ -52,4 +52,17 @@ difference ()
 }
 }
 
-coin_filter(Bwidth,Blength, Bheight, stack_z, stack_gap, wall, bottom,30);
+
+
+stackable_box(Bwidth, Blength, Bheight, stack_z, stack_gap, wall, bottom,0);
+for (n = [0:len(coins)-2]) 
+{
+	assign(d = (coins[n][1] + coins[n+1][1])/2) {
+	translate ([0,0,2*Bheight*(n+1)])
+		coin_filter(Bwidth, Blength, Bheight, stack_z, stack_gap, wall, bottom, d);
+   }
+}
+
+translate([-wall,-wall,2*Bheight*(len(coins)+1)])
+	mirror([0,0,1])
+	stackable_box_cover(Bwidth, Blength, 5, stack_z, stack_gap,bottom);
