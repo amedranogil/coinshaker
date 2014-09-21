@@ -10,4 +10,8 @@ Available through Thingiverse:
 http://www.thingiverse.com/thing:471430
 
 ##License
-http://creativecommons.org/licenses/by-nc/3.0/
+
+http://creativecommons.org/licenses/by-nc-sa/3.0/
+
+###Based on 
+[Customizable Stackable Box](http://www.thingiverse.com/thing:156084) by [Synchron](http://www.thingiverse.com/Synchron) with [CC BY-NC-SA 3.0 license](http://creativecommons.org/licenses/by-nc-sa/3.0/)
