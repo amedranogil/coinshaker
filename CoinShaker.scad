@@ -13,6 +13,7 @@ Bheight = 13;
 /*
  * tweakable parameters
  */
+//the minimal separation between holes
 MinOffset = 1;
 // the z height of the stacking frame
 stack_z = 5;
@@ -72,6 +73,8 @@ stackable_box_with_name(Bwidth, Blength, Bheight, stack_z, stack_gap, wall, bott
 for (n = [1:len(coins)-1]) 
 {
 	//Each box will have diameter holes mid-size between "this" and previous.
+   //since coins is ordered in ascending order of diameter,
+   //coins of "this" are too big to pass, the rest go through.
 	assign(d = (coins[n-1][1] + coins[n][1])/2) {
 	translate ([0,0,2*Bheight*n])
 		coin_filter(Bwidth, Blength, Bheight, stack_z, stack_gap, wall, bottom, d, coins[n][0]);
