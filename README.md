@@ -9,5 +9,5 @@ If your currency is not available create your own:
 Available through Thingiverse:
 http://www.thingiverse.com/thing:471430
 
-=License=
+##License
 http://creativecommons.org/licenses/by-nc/3.0/
