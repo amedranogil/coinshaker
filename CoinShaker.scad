@@ -4,6 +4,7 @@ use <stackable_box.scad>;
 include <Currency/EUR.scad>;
 //include <Currency/USD.scad>;
 //include <Currency/GBP.scad>;
+//include <Currency/CAD.scad>;
 
 
 // Parameters
