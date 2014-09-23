@@ -3,6 +3,7 @@ use <stackable_box.scad>;
 // select currency
 include <Currency/EUR.scad>;
 //include <Currency/USD.scad>;
+//include <Currency/GBP.scad>;
 
 
 // Parameters
