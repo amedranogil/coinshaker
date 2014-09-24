@@ -66,15 +66,15 @@ difference ()
 }
 }
 
-
 /*
  * Building the tower
  */
+module tower(){
 // bottom does not have holes, just collects smallest coins.
 stackable_box_with_name(Bwidth, Blength, Bheight, stack_z, stack_gap, wall, bottom,support_start_height, coins[0][0]);
 for (n = [1:len(coins)-1]) 
 {
-	//Each box will have diameter holes mid-size between "this" and previous.
+   //Each box will have diameter holes mid-size between "this" and previous.
    //since coins is ordered in ascending order of diameter,
    //coins of "this" are too big to pass, the rest go through.
 	assign(d = (coins[n-1][1] + coins[n][1])/2) {
@@ -86,3 +86,24 @@ for (n = [1:len(coins)-1])
 translate([-wall,-wall,2*Bheight*(len(coins))+ Bheight])
 	mirror([0,0,1])
 	stackable_box_cover(Bwidth, Blength, 5, stack_z, stack_gap,bottom);
+}
+
+
+module tray(n = 0){
+if (n == 0) {
+   stackable_box_with_name(Bwidth, Blength, Bheight, stack_z, stack_gap, wall, bottom, support_start_height, coins[0][0]);
+} 
+if  (n>0 && n <= len(coins)-1) {
+	assign(d = (coins[n-1][1] + coins[n][1])/2) {
+	coin_filter(Bwidth, Blength, Bheight, stack_z, stack_gap, wall, bottom, d, coins[n][0]);
+	}
+}
+if (n >= len(coins)){
+	stackable_box_cover(Bwidth, Blength, 5, stack_z, stack_gap,bottom);
+}
+}
+
+tower();
+
+//tray(0);
+
