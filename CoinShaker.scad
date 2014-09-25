@@ -11,6 +11,8 @@ include <Currency/EUR.scad>;
 Bwidth = 100;
 Blength = 100;
 Bheight = 13;
+//specify part to generate = 0..#cointypes or "all"
+part="all";
 
 /*
  * tweakable parameters
@@ -98,12 +100,15 @@ if  (n>0 && n <= len(coins)-1) {
 	coin_filter(Bwidth, Blength, Bheight, stack_z, stack_gap, wall, bottom, d, coins[n][0]);
 	}
 }
-if (n >= len(coins)){
+if (n <0 || n >= len(coins)){
 	stackable_box_cover(Bwidth, Blength, 5, stack_z, stack_gap,bottom);
 }
 }
 
-tower();
-
-//tray(0);
+if (part=="all"){
+	tower();
+}
+else {
+	tray(part);
+}
 
