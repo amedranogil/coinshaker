@@ -1,3 +1,4 @@
+use <write/Write.scad>;
 use <stackable_box.scad>;
 
 // select currency
@@ -12,7 +13,7 @@ Bwidth = 100;
 Blength = 100;
 Bheight = 13;
 //specify part to generate = 0..#cointypes or "all"
-part="all";
+part=1;
 
 /*
  * tweakable parameters
@@ -25,7 +26,7 @@ stack_z = 5;
 stack_gap = 1;
 
 // start-height for overhang suport (should be >stack_z )
-support_start_height = 10;
+support_start_height = Bheight - stack_z ;
 
 // wall thickness
 wall = 2.5;
@@ -47,9 +48,13 @@ for (l = [50:5:150], d=[9:3:30])
 }
 
 module stackable_box_with_name(x,y,z,stack_z,gap,wall,bottom,support_start_height, tag){
-	stackable_box(x,y,z,stack_z,gap,wall,bottom,support_start_height);
-	//TODO add tag carving
 	echo(tag);
+difference(){
+	stackable_box(x,y,z,stack_z,gap,wall,bottom,support_start_height);
+	//add tag carving on 2 sides
+	translate([x/2,0,z/2])rotate([90,0,0]) write(tag, t=wall, h=z-stack_z *2, center=true);
+	translate([x/2,y+wall*2,z/2])rotate([90,0,180])write(tag, t=wall, h=z-stack_z *2, center=true);
+	}
 }
 
 module coin_filter(x, y, z, stack_z, gap, wall, bottom, coin_d, name){
@@ -111,4 +116,5 @@ if (part=="all"){
 else {
 	tray(part);
 }
+
 
