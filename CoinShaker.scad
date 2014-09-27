@@ -1,37 +1,5 @@
-use <write/Write.scad>;
-use <stackable_box.scad>;
-
-// select currency
-include <Currency/EUR.scad>;
-//include <Currency/USD.scad>;
-//include <Currency/GBP.scad>;
-//include <Currency/CAD.scad>;
-
-
-// Parameters
-Bwidth = 100;
-Blength = 100;
-Bheight = 13;
-//specify part to generate = 0..#cointypes or "all"
-part="all";
-
-/*
- * tweakable parameters
- */
-//the minimal separation between holes
-MinOffset = 1;
-// the z height of the stacking frame
-stack_z = 5;
-// per side gap between the box-bottom and the stacking frame 
-stack_gap = 1;
-
-// start-height for overhang suport (should be >stack_z )
-support_start_height = Bheight - stack_z ;
-
-// wall thickness
-wall = 2.5;
-// bottom thickness
-bottom = 1;
+use <write/Write.scad>
+use <stackable_box.scad>
 
 //number of diameters in lenght
 function ninl(d,l) = floor(l/d) - ( l % d <= MinOffset? 1 : 0);
@@ -92,11 +60,11 @@ translate([-wall,-wall,2*Bheight*(len(coins))+ Bheight])
 
 module tray(n = 0){
 if (n == 0) {
-// bottom does not have holes, just collects smallest coins.
+   // bottom does not have holes, just collects smallest coins.
    stackable_box_with_name(Bwidth, Blength, Bheight, stack_z, stack_gap, wall, bottom, support_start_height, coins[0][0]);
 } 
-if  (n>0 && n <= len(coins)-1) {
-	//Each box will have diameter holes mid-size between "this" and previous.
+if  (n>0 && n < len(coins)) {
+   //Each box will have diameter holes mid-size between "this" and previous.
    //since coins is ordered in ascending order of diameter,
    //coins of "this" are too big to pass, the rest go through.
 	assign(d = (coins[n-1][1] + coins[n][1])/2) {
@@ -104,16 +72,9 @@ if  (n>0 && n <= len(coins)-1) {
 	}
 }
 if (n <0 || n >= len(coins)){
-	//Lid to enable shaking in Z too.
-	stackable_box_cover(Bwidth, Blength, 5, stack_z, stack_gap,bottom);
+   //Lid to enable shaking in Z too.
+   stackable_box_cover(Bwidth, Blength, 5, stack_z, stack_gap,bottom);
 }
-}
-
-if (part=="all"){
-	tower();
-}
-else {
-	tray(part);
 }
 
 
