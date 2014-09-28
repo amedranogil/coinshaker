@@ -18,7 +18,7 @@ for (l = [50:5:150], d=[9:3:30])
 module stackable_box_with_name(x,y,z,stack_z,gap,wall,bottom,support_start_height, tag){
 	echo(tag);
 difference(){
-	stackable_box(x,y,z,stack_z,gap,wall,bottom,support_start_height);
+	stackable_box(x,y,z,stack_z,gap,wall,bottom,support_start_height,epsilon);
 	//add tag carving on 2 sides
 	%translate([x/2,0,z/2 - bottom])rotate([90,0,0]) write(tag, t=wall, h=z-support_start_height - bottom, center=true);
 	%translate([x/2,y+wall*2,z/2])rotate([90,0,180]) write(tag, t=wall, h=z-stack_z *2, center=true);

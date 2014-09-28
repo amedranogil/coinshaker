@@ -1,9 +1,9 @@
 // Display the Cover
-display_cover = "yes"; // [yes,no]
+display_cover = "no"; // [yes,no]
 // Display the box
 display_box = "yes"; // [yes,no]
 // Create ears at the corner
-with_antiwarp_ears = "yes"; // [yes,no]
+with_antiwarp_ears = "no"; // [yes,no]
 
 
 // the x length inside the box (the resulting x of the box is inner_x + 2*wall)
@@ -61,20 +61,18 @@ module stackable_box_cover(x, y,stack_z, gap, w,c) {
 	cube([x + w*4 + gap*2, y + w*4 + gap*2, c]);
 	translate([w+gap, w+gap, 0])
 		cube([x + w*2, y + w*2, stack_z+c]);
-
-
 }
 
 
-module stackable_box(x, y, z,stack_z, gap, w, b, supheight) {
+module stackable_box(x, y, z,stack_z, gap, w, b, supheight, epsilon=0.1) {
 	box(x, y, z, w, b);
-	translate([-wall-gap, -wall-gap, z+b])
-		box(x + wall*2 + gap*2, y + wall*2 + gap*2, stack_z, w, 0);
+	translate([-wall-gap , -wall-gap , z+b])
+		box(x + wall*2 + gap*2 +2*epsilon, y + wall*2 + gap*2+2*epsilon, stack_z, w-epsilon, 0);
 
 	difference() {
 		hull() {
 			translate([-wall-gap, -wall-gap, z+b]) 
-				box(x + wall*2 + gap*2, y + wall*2 + gap*2, 0.1, w, 0);
+				box(x + wall*2 + gap*2 +2*epsilon, y + wall*2 + gap*2 +2*epsilon, 0.1,  w-epsilon, 0);
 			translate([0, 0, supheight]) 
 				box(x, y, 0.1, w, b);
 		}
