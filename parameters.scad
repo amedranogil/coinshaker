@@ -1,6 +1,7 @@
 /*
  * Main parameters
  */
+//Internal box dimensions
 Bwidth = 100;
 Blength = 100;
 Bheight = 13;
@@ -22,3 +23,8 @@ support_start_height = Bheight - stack_z ;
 wall = 2.5;
 // bottom thickness
 bottom = 1;
+
+//ABS-antideformation Ear Radius (0 to deactivate)
+earR=0;
+//ABS-antideformation Ear Height
+earH=1;

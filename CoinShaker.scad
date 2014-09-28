@@ -52,13 +52,25 @@ for (n = [0:len(coins)-1])
 		tray(n);
 }
 
-translate([-wall,-wall,2*Bheight*(len(coins))+ Bheight])
+translate([-wall*2-stack_gap,-wall*2-stack_gap,2*Bheight*(len(coins))+ Bheight])
 	mirror([0,0,1])
 	tray(-1);
 }
 
 
 module tray(n = 0){
+if (earR <= 0) {
+   justTray(n);
+} else {
+   union(){
+     justTray(n);
+     ears(0,0,Bwidth, Blength,earR,earH);
+   }
+}
+
+}
+
+module justTray(n){
 if (n == 0) {
    // bottom does not have holes, just collects smallest coins.
    stackable_box_with_name(Bwidth, Blength, Bheight, stack_z, stack_gap, wall, bottom, support_start_height, coins[0][0]);

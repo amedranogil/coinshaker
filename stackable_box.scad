@@ -93,7 +93,7 @@ module box(x, y, z, w,b) {
 	}
 }
 
-module ears(xmin, ymin, xmax, ymax) {
+module ears(xmin, ymin, xmax, ymax, ear_radius, ear_height) {
 	translate([xmin, ymin, 0]) cylinder(r = ear_radius, h = ear_height);
 	translate([xmin, ymax, 0]) cylinder(r = ear_radius, h = ear_height);
 	translate([xmax, ymin, 0]) cylinder(r = ear_radius, h = ear_height);
