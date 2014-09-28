@@ -1,4 +1,4 @@
-include <../CoinShaker.scad>
+include <CoinShaker.scad>
 
 
 
@@ -6,7 +6,7 @@ include <../CoinShaker.scad>
  * Main parameters
  */
 // select currency
-include <../Currency/EUR.scad>;
+include <EUR.scad>;
 
 //specify part to generate = 0..#cointypes or "all"
 part="all";
