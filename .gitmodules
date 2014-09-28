@@ -1,0 +1,3 @@
+[submodule "ttf2dxf"]
+	path = ttf2dxf
+	url = https://github.com/amedranogil/ttf2dxf.git
