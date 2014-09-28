@@ -7,7 +7,7 @@ Blength = 100;
 Bheight = 13;
 
 //lip wall reduction, enhances stackability. adjust accoring to printer
-epsilon = 0.1;
+epsilon = 0.125;
 
 /*
  * tweakable parameters

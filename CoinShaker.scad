@@ -20,8 +20,8 @@ module stackable_box_with_name(x,y,z,stack_z,gap,wall,bottom,support_start_heigh
 difference(){
 	stackable_box(x,y,z,stack_z,gap,wall,bottom,support_start_height,epsilon);
 	//add tag carving on 2 sides
-	%translate([x/2,0,z/2 - bottom])rotate([90,0,0]) write(tag, t=wall, h=z-support_start_height - bottom, center=true);
-	%translate([x/2,y+wall*2,z/2])rotate([90,0,180]) write(tag, t=wall, h=z-stack_z *2, center=true);
+	translate([x/2,0.7,z/2 - bottom])rotate([90,0,0]) write(tag, t=wall, h=1000, center=true);
+	translate([x/2,y+wall*2-0.7,z/2 - bottom])rotate([90,0,180]) write(tag, t=wall, h=1000, center=true);
 	}
 }
 
