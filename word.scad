@@ -36,7 +36,7 @@ module write(wrd,font="Ubuntu-B.dxf", t=10, h=1, center=true) {
     hw = height(wrd,font);
     s = t/(hw/2);
     if (center == true) {
-        translate([-s*ww/2, -s*hw/5 ,0])
+        translate([-s*ww/2, -s*hw/5 ,-h/2])
         scale([s,s,1]) word(wrd,font,h,0);
     }
     else {
