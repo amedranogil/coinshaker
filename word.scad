@@ -1,4 +1,19 @@
+function length(l,font="Ubuntu-B.dxf",i=0) =
+i==len(l)? 
+            0 
+         :
+            dxf_dim(file=font, name="advx",layer=l[i]) + length(l,font,i+1);
+
+function height(l,font="Ubuntu-B.dxf",i=0) =
+i==len(l)? 
+            0 
+         :
+           max (dxf_dim(file=font, name="miny",layer=l[i]), length(l,font,i+1));
+
+
 module letter(l,font="Ubuntu-B.dxf",h=100,i=0) {
+    echo (dxf_dim(file=font, name="advy",layer=l[i]));
+    //echo (dxf_dim(file=font, name="maxy",layer=l[i]));
     union() {	
 	linear_extrude( height=h) import(font, layer=l[i]);
 	translate([dxf_dim(file=font, name="advx",layer=l[i]),
@@ -17,6 +32,14 @@ module word(wrd,font="Ubuntu-B.dxf",h=100,i=0) {
 }
 
 module write(wrd,font="Ubuntu-B.dxf", t=10, h=1, center=true) {
-    //TODO adjust to requested size
-    scale(0.001) word(wrd,font,h,0);
+    ww = length(wrd,font);
+    hw = height(wrd,font);
+    s = t/(hw/2);
+    if (center == true) {
+        translate([-s*ww/2, -s*hw/5 ,0])
+        scale([s,s,1]) word(wrd,font,h,0);
+    }
+    else {
+        scale([s,s,1]) word(wrd,font,h,0);
+    }
 }
