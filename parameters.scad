@@ -7,13 +7,13 @@ Blength = 100;
 Bheight = 13;
 
 //lip wall reduction, enhances stackability. adjust accoring to printer
-epsilon = 0.025;
+epsilon = 0.0125;
 
 /*
  * tweakable parameters
  */
 //the minimal separation between holes
-MinOffset = 1;
+MinOffset = 1.5;
 // the z height of the stacking frame
 stack_z = 5;
 // per side gap between the box-bottom and the stacking frame 
@@ -23,9 +23,9 @@ stack_gap = 1;
 support_start_height = Bheight - stack_z ;
 
 // wall thickness
-wall = 2.5;
+wall = 3;
 // bottom thickness
-bottom = 1;
+bottom = 2;
 
 //ABS-antideformation Ear Radius (0 to deactivate)
 earR=0;

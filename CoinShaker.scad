@@ -16,7 +16,6 @@ for (l = [50:5:150], d=[9:3:30])
 }
 
 module stackable_box_with_name(x,y,z,stack_z,gap,wall,bottom,support_start_height, tag){
-	echo(tag);
 difference(){
 	stackable_box(x,y,z,stack_z,gap,wall,bottom,support_start_height,epsilon);
 	//add tag carving on 2 sides
@@ -80,6 +79,8 @@ if  (n>0 && n < len(coins)) {
    //since coins is ordered in ascending order of diameter,
    //coins of "this" are too big to pass, the rest go through.
 	assign(d = (coins[n-1][1] + coins[n][1])/2) {
+	echo( coins[n][0]);
+   echo(d);
 	coin_filter(Bwidth, Blength, Bheight, stack_z, stack_gap, wall, bottom, d, coins[n][0]);
 	}
 }
