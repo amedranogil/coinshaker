@@ -12,8 +12,6 @@ i==len(l)?
 
 
 module letter(l,font="Ubuntu-B.dxf",h=100,i=0) {
-    echo (dxf_dim(file=font, name="advy",layer=l[i]));
-    //echo (dxf_dim(file=font, name="maxy",layer=l[i]));
     union() {	
 	linear_extrude( height=h) import(font, layer=l[i]);
 	translate([dxf_dim(file=font, name="advx",layer=l[i]),
