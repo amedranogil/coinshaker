@@ -1,10 +1,15 @@
-Shaker tray type coin sorter,  
-Customizable size AND CURRENCY!!!!  
-If your currency is not available create your own:  
-- copy the nearest available currency file (by number of coins)
-- edit and add coin parameters
-- edit main scad file to include new currency
-- consider contributing new currency to project https://github.com/amedranogil/coinshaker 
+Shaker tray type coin sorter,
+Customizable size AND CURRENCY!!!!
+
+If your currency is not available create your own:
+
+  1.  Using CUSTOM as currency and specifying Custom Coins (an array of vectors where each vector contains the name of the coin and its diameter; the array must be sorted in increasing diameter)
+  2.  Edit the file to include your currency
+    - add (use ISO 4217 Code) currency denomination
+    - add if section with coin description
+    - consider contributing new currency to project https://github.com/amedranogil/coinshaker 
+
+Not only applicable to coins, it can sort other things like marbles, blot-nuts, seeds, etc...
 
 Available through Thingiverse:
 http://www.thingiverse.com/thing:471430
